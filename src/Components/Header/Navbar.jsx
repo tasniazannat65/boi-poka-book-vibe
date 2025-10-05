@@ -1,11 +1,14 @@
 import React from 'react';
 import Container from '../Container/Container';
+import {NavLink } from 'react-router';
 
 const Navbar = () => {
   const Links = <>
-    <li><a href="">Home</a></li>
-      <li><a href="">Listed Books</a></li>
-      <li><a href="">Pages to Read</a></li>
+      <NavLink to='/'
+      className={({isActive})=>isActive? 'border border-[#23BE0A] text-[#23BE0A] rounded-[8px] p-5':'text-[#131313cc] border border-transparent rounded-[8px] p-5'}
+      >Home</NavLink>
+      <NavLink to='/readList'  className={({isActive})=>isActive? 'border border-[#23BE0A] text-[#23BE0A] rounded-[8px] p-5':'text-[#131313cc] border border-transparent rounded-[8px] p-5'}>Listed Books</NavLink>
+      <NavLink to='/pagesRead'  className={({isActive})=>isActive? 'border border-[#23BE0A] text-[#23BE0A] rounded-[8px] p-5':'text-[#131313cc] border border-transparent rounded-[8px] p-5'}>Pages to Read</NavLink>
   </>
 
     return (
@@ -25,7 +28,7 @@ const Navbar = () => {
     <a className="text-xl lg:text-3xl font-bold">Book Vibe</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-     <ul className="menu menu-horizontal px-1 text-[#131313cc]">
+     <ul className="menu menu-horizontal px-1 flex items-center text-lg">
      {Links}
     </ul>
   </div>

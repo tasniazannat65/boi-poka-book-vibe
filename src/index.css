@@ -19,3 +19,7 @@
   
 }
 
+.book-tags{
+  @apply badge flex justify-center items-center text-[#23BE0A] font-medium bg-[#23be0a0d] px-4 py-[8px] rounded-[30px]
+}
+
