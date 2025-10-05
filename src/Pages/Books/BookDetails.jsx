@@ -23,9 +23,9 @@ const BookDetails = () => {
     }
     return (
         <Container>
-     <div className='flex justify-between items-center gap-10 mb-10'>
-     <div className='flex-1 flex justify-center items-center w-[450px] h-[700px] bg-[#1313130d] rounded-2xl '>
-       <img className=' w-[425px] h-[564px] ' src={image} alt="" />
+     <div className='flex flex-col lg:flex-row justify-between items-center gap-10 mb-10'>
+     <div className='flex-1 flex justify-center items-center w-[400px] h-[650px] lg:w-[450px] lg:h-[700px] bg-[#1313130d] rounded-2xl p-7 lg:p-0'>
+       <img className='w-[250px] h-[280px] lg:w-[425px] lg:h-[564px] ' src={image} alt="" />
             </div>
             <div className='flex-1 space-y-5'>
                 <h3 className='font-bold text-4xl playfair-display text-[#131313]'>{bookName}</h3>

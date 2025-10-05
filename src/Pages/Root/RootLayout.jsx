@@ -1,14 +1,22 @@
 import React from 'react';
 import Navbar from '../../Components/Header/Navbar';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigation } from 'react-router';
 import Footer from '../../Components/Footer/Footer';
  import { ToastContainer} from 'react-toastify';
+import HydrateFallback from '../LoadingSpinner/HydrateFallback';
 
 const RootLayout = () => {
+    const navigation = useNavigation();
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            {
+                navigation?.state === 'loading' ? (<HydrateFallback/>) : (  <main className='min-h-[calc(100vh-240px)]'>
+                <Outlet></Outlet>
+            </main>)
+            }
+            
+          
             <Footer></Footer>
 
 

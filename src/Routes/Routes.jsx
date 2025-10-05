@@ -6,11 +6,13 @@ import Home from '../Pages/Home/Home';
 import BookDetails from '../Pages/Books/BookDetails';
 import ReadList from '../Pages/ReadList/ReadList';
 import PagesToRead from '../Pages/PagesToRead/PagesToRead';
+import HydrateFallback from '../Pages/LoadingSpinner/HydrateFallback';
 
 export const router = createBrowserRouter([
     {
       path: '/',
       Component: RootLayout,
+      hydrateFallbackElement: <HydrateFallback/>,
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
