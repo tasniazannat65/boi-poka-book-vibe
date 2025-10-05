@@ -19,7 +19,7 @@ const ReadList = () => {
         const convertedStoredBooks = storedBookData.map(bookId=> parseInt(bookId))
         const myReadList = data.filter(book=> convertedStoredBooks.includes(book.bookId))
         setReadList(myReadList)
-    }, []);
+    }, [data]);
     const handleSort = (type)=>{
         setSort(type)
        if(type === 'Pages'){

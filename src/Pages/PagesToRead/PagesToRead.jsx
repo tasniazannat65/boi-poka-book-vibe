@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
-import { Bar, BarChart, CartesianGrid, Cell, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import Container from '../../Components/Container/Container';
 
 const colors = ['#0085F6', '#00C29C', '#FBB929', '#FC8042', '#FB0100'];
@@ -25,24 +25,28 @@ const PagesToRead = () => {
     return (
        <Container>
          <div className='bg-[#13131308] rounded-3xl mb-10'>
-           <BarChart width={1390} height={500} data={data}  margin={{
+       <ResponsiveContainer width='100%' height={window.innerWidth < 768 ? 300 : 500}>
+            <BarChart  data={data}  margin={{
         top: 30,
         right: 30,
         left: 30,
         bottom: 30,
       }}>
         <CartesianGrid strokeDasharray="3 3"></CartesianGrid>
-        <XAxis dataKey='bookName'></XAxis>
+        <XAxis dataKey='bookName' interval={0} tick={{fontSize: 12}}></XAxis>
         <YAxis></YAxis>
         <Tooltip></Tooltip>
         <Legend></Legend>
-              <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+              <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}
+              maxBarSize={50}
+              >
           {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
         ))}
 
         </Bar>
       </BarChart>
+       </ResponsiveContainer>
             
         </div>
        </Container>
