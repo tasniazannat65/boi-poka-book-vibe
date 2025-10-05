@@ -11,13 +11,14 @@ import HydrateFallback from '../Pages/LoadingSpinner/HydrateFallback';
 export const router = createBrowserRouter([
     {
       path: '/',
+       
       Component: RootLayout,
       hydrateFallbackElement: <HydrateFallback/>,
+     
       errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             index: true,
-            path: '/',
             loader:()=>fetch('booksData.json'),
             Component: Home,
             
