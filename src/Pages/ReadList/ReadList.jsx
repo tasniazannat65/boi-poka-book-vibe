@@ -13,7 +13,7 @@ const ReadList = () => {
     const data = useLoaderData()
     const [readList, setReadList] = useState([]);
     const [sort, setSort] = useState('')
-    console.log(data)
+   
     useEffect(()=>{
         const storedBookData = getStoredBook()
         const convertedStoredBooks = storedBookData.map(bookId=> parseInt(bookId))

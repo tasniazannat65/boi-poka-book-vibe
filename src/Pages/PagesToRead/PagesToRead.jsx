@@ -21,7 +21,7 @@ const TriangleBar = (props) => {
 
 const PagesToRead = () => {
     const data = useLoaderData();
-    console.log(data)
+    
     return (
        <Container>
          <div className='bg-[#13131308] rounded-3xl mb-10'>
@@ -33,7 +33,7 @@ const PagesToRead = () => {
         bottom: 30,
       }}>
         <CartesianGrid strokeDasharray="3 3"></CartesianGrid>
-        <XAxis dataKey='bookName' interval={0} tick={{fontSize: 12}}></XAxis>
+        <XAxis dataKey='bookName' interval={0} tick={{fontSize: 10}}></XAxis>
         <YAxis></YAxis>
         <Tooltip></Tooltip>
         <Legend></Legend>
