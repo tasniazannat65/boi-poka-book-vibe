@@ -24,4 +24,30 @@ else{
 }
 }
 
-export {addToStoredDB, getStoredBook}
+
+const getWishListBook = ()=>{
+    const wishListDataSTR = localStorage.getItem('wishList');
+    if(wishListDataSTR){
+        const storedWishListBook = JSON.parse(wishListDataSTR);
+        return storedWishListBook;
+    }
+    else{
+        return [];
+    }
+}
+
+const addToWishListDB = (bookId)=>{
+    const storedWishListData = getWishListBook();
+    if(storedWishListData.includes(bookId)){
+        toast.warn('book already added in the wishlist!!');
+        return;
+
+    }
+    else{
+        storedWishListData.push(bookId);
+        const wishData = JSON.stringify(storedWishListData);
+        localStorage.setItem('wishList', wishData)
+    }
+}
+
+export {addToStoredDB, getStoredBook, addToWishListDB, getWishListBook}

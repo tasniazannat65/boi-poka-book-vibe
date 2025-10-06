@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import Container from '../../Components/Container/Container';
-import { addToStoredDB } from '../../Utilities/AddToDB';
+import { addToStoredDB, addToWishListDB } from '../../Utilities/AddToDB';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -20,6 +20,15 @@ const BookDetails = () => {
   icon: "success"
 });
         addToStoredDB(bookId)
+    }
+
+    const handleWishList = (bookId)=>{
+           MySwal.fire({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success"
+});
+        addToWishListDB(bookId)
     }
     return (
         <Container>
@@ -50,7 +59,7 @@ const BookDetails = () => {
                 <p className='work-sans text-[#131313b3]'>Rating: <span className='font-semibold text-[#131313]'>{rating}</span></p>
                 <div className='flex items-center space-x-3'>
                  <button onClick={()=>handleBookRead(bookId)} className='btn text-[#131313] font-semibold text-lg rounded-[8px] border-2 border-[#1313134d] px-[18px] py-[28px] bg-white work-sans'>Read</button>
-                 <button className='btn bg-[#50B1C9] text-white font-semibold text-lg rounded-[8px] px-[18px] py-[28px] work-sans'>Wishlist</button>
+                 <button onClick={()=>handleWishList(bookId)} className='btn bg-[#50B1C9] text-white font-semibold text-lg rounded-[8px] px-[18px] py-[28px] work-sans'>Wishlist</button>
                 </div>
             </div>
             

@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Container from '../../Components/Container/Container';
 import { useLoaderData } from 'react-router';
-import { getStoredBook } from '../../Utilities/AddToDB';
+import { getStoredBook, getWishListBook } from '../../Utilities/AddToDB';
 import ReadListShow from '../ReadListShow/ReadListShow';
 
 
@@ -12,13 +12,18 @@ import ReadListShow from '../ReadListShow/ReadListShow';
 const ReadList = () => {
     const data = useLoaderData()
     const [readList, setReadList] = useState([]);
+    const [wishList, setWishList] = useState([]);
     const [sort, setSort] = useState('')
    
     useEffect(()=>{
         const storedBookData = getStoredBook()
         const convertedStoredBooks = storedBookData.map(bookId=> parseInt(bookId))
         const myReadList = data.filter(book=> convertedStoredBooks.includes(book.bookId))
-        setReadList(myReadList)
+        setReadList(myReadList);
+        const storedWishListData = getWishListBook();
+        const convertedWishListBooks = storedWishListData.map(bookId=> parseInt(bookId));
+        const myWishList = data.filter(book=> convertedWishListBooks.includes(book.bookId));
+        setWishList(myWishList);
     }, [data]);
     const handleSort = (type)=>{
         setSort(type)
@@ -58,7 +63,12 @@ const ReadList = () => {
     
     </TabPanel>
     <TabPanel>
-      <h2>Any content 2</h2>
+       <div className='mb-7'>
+        {
+          wishList.map(book=> <ReadListShow key={book.bookId} book={book}></ReadListShow>)
+        }
+       
+     </div>
     </TabPanel>
   </Tabs>
      </Container>
